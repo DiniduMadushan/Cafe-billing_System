@@ -31,9 +31,9 @@ public:
     void sum();
 };
 
-//******************************************************************
-//        INPUT FUNCTION
-//******************************************************************
+
+// input function
+
 
 void head::input()
 {
@@ -53,9 +53,9 @@ void head::input()
     }
 }
 
-//******************************************************************
+
 //       OUTPUT FUNCTION
-//******************************************************************
+
 
 
 
@@ -72,18 +72,18 @@ void head::output()
     outfile.close();
 
     {ofstream outfile("HISTORY.TXT", ios::app);
-    outfile<<endl<<"Bill No : "<<x<<endl;
-    outfile<<"|------------------------------------------------------------------------|"<<endl;
+    outfile<<endl<<"\n\t\t\t\t\tBill No : "<<x<<endl;
+    outfile<<"\t\t\t\t\t|------------------------------------------------------------------------|"<<endl;
 cout<<"\n";
-    cout<<"\n\t\t\t\t\t\t\t---Bill summary---\n\n";
+    cout<<"\n\t\t\t\t\t\t\t**** Bill summary ****\n\n";
     cout<<"\t\t\t\t\tItem name\tQuantity\tPrice\t\tTotal Price\n\n";
     for(int i=0;i<no_of_items;i++)
     {
-        outfile<<"\nItem Name:  "<<Item_name[i]<<" \t| Quantity:  "<<Quantity[i]<<"\t| Price:  "<< total_price[i]<<endl;
+        outfile<<"\n\t\t\t\t\tItem Name:  "<<Item_name[i]<<" \t| Quantity:  "<<Quantity[i]<<"\t| Price:  "<< total_price[i]<<endl;
         cout<<"\n\t\t\t\t\t"<<Item_name[i]<<"\t\t"<<Quantity[i]<<"\t\t   "<<price[i]<<"\t\t   "<< total_price[i]<<'\n';
     }
 
-    outfile<<"\n------------------------------------------------------------------------"<<endl;
+    outfile<<"\n\t\t\t\t\t------------------------------------------------------------------------"<<endl;
     outfile.close();
     }
     
@@ -142,7 +142,7 @@ pay:
         cout<<"\n\t\t\t\t\tTotal Cash Back: Rs. "<<cash-sum<<'\n';
         
     else
-    {    cout<<"\n\t\t\t\t\tGiven cash is not enough.please repay!!!";
+    {    cout<<"\n\t\t\t\t\tGiven cash is not enough.please repay!!!\n";
 
     goto pay;
     }
