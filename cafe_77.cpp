@@ -38,16 +38,17 @@ public:
 void head::input()
 {
     system("CLS");   // Clears the console screen
-    cout<<"\n\n\t\t\t\t\tplease Enter number of items in the cart : ";
+    cout<<"\n\n\t\t\t\t\t\t\t---- New Entry ----";
+    cout<<"\n\n\t\t\t\t\tPlease Enter number of items in the cart = \t ";
     cin>>no_of_items;
 
     for(int i=0; i<no_of_items; i++)
     {
-        cout<<"\n\t\t\t\t\t\tEnter name of item no "<<i+1<<": ";
+        cout<<"\n\n\t\t\t\t\tEnter name of item no "<<i+1<<"\t\t:\t ";
         cin>>Item_name[i];
-        cout<<"\t\t\t\t\t\tEnter quantity : ";
+        cout<<"\t\t\t\t\tEnter quantity \t\t\t:\t ";
         cin>>Quantity[i];
-        cout<<"\t\t\t\t\t\tEnter unit price of item no "<<i+1<<": ";
+        cout<<"\t\t\t\t\tEnter unit price \t\t:\t ";
         cin>>price[i];
         total_price[i]=Quantity[i]*price[i];
     }
@@ -75,12 +76,14 @@ void head::output()
     outfile<<endl<<"\n\t\t\t\t\tBill No : "<<x<<endl;
     outfile<<"\t\t\t\t\t|------------------------------------------------------------------------|"<<endl;
 cout<<"\n";
-    cout<<"\n\t\t\t\t\t\t\t**** Bill summary ****\n\n";
-    cout<<"\t\t\t\t\tItem name\tQuantity\tPrice\t\tTotal Price\n\n";
+    system("PAUSE");
+    system("CLS");
+    cout<<"\n\n\t\t\t\t\t\t\t\t----- Bill summary -----\n\n";
+    cout<<"\t\t\t\t\tItem name\t\tQuantity\t\tPrice\t\tTotal Price\n\n";
     for(int i=0;i<no_of_items;i++)
     {
-        outfile<<"\n\t\t\t\t\tItem Name:  "<<Item_name[i]<<" \t| Quantity:  "<<Quantity[i]<<"\t| Price:  "<< total_price[i]<<endl;
-        cout<<"\n\t\t\t\t\t"<<Item_name[i]<<"\t\t"<<Quantity[i]<<"\t\t   "<<price[i]<<"\t\t   "<< total_price[i]<<'\n';
+        outfile<<"\n\t\t\t\t\tItem Name:  "<<Item_name[i]<<" \t\t| Quantity:  "<<Quantity[i]<<"\t\t| Price:  "<< total_price[i]<<endl;
+        cout<<"\n\t\t\t\t\t"<<Item_name[i]<<"\t\t\t"<<Quantity[i]<<"\t\t\t"<<price[i]<<"\t\t\t"<< total_price[i]<<'\n';
     }
 
     outfile<<"\n\t\t\t\t\t------------------------------------------------------------------------"<<endl;
@@ -126,20 +129,22 @@ void vat::outputs()
            qty+=Quantity[i];
     }
     
-    cout<<"\n\t\t\t\t\t--------------------------------------------------------------------\n";
+    cout<<"\n\t\t\t\t\t---------------------------------------------------------------------------\n";
     cout<<"\n\t\t\t\t\t\tTotal cost= "<<sumt<<"\t\tInclusive of VAT: "<<sum;
-    cout<<"\n\n\t\t\t\t\t--------------------------------------------------------------------\n";
+    cout<<"\n\n\t\t\t\t\t---------------------------------------------------------------------------\n";
 
 
-
-    cout<<"\n\n\t\t\t\t\t\t<<------------ PAYMENT SUMMARY ---------->>\n";
+    system("PAUSE");
+    system("CLS");
+    cout<<"\n\n\t\t\t\t\t\t<<--------- PAYMENT SUMMARY ------->>\n";
+    cout<<"\n\n\t\t\t\t\tTotal cost to pay\t\t\t: Rs. "<<sum;
 
 pay:
-    cout<<"\n\t\t\t\t\tTotal cash given by the customer: Rs.  ";
+    cout<<"\n\n\t\t\t\t\tTotal cash given by the customer\t: Rs. ";
     cin>>cash;
 
     if(cash>=sum)
-        cout<<"\n\t\t\t\t\tTotal Cash Back: Rs. "<<cash-sum<<'\n';
+        cout<<"\n\t\t\t\t\tRemainder\t\t\t\t: Rs. "<<cash-sum<<'\n';
         
     else
     {    cout<<"\n\t\t\t\t\tGiven cash is not enough.please repay!!!\n";
@@ -156,11 +161,11 @@ pay:
 int authenticateUser()
 {
     std::string username, password;
-
-    std::cout << "\n\n\n\n\t\t\t\t\t\t\tEnter your username: ";
+    cout<<"\n\n\n\n\t\t\t\t\t\t-- USER LOGIN --";
+    std::cout << "\n\n\n\t\t\t\t\tEnter your username\t: ";
     std::cin >> username;
 
-    std::cout << "\t\t\t\t\t\t\tEnter your password: ";
+    std::cout << "\t\t\t\t\tEnter your password\t: ";
     std::cin >> password;
 
     // Check if the entered username and password are correct
@@ -233,7 +238,8 @@ start:
          obj.outputs();
          goto start;
      case'2':
-
+         system("CLS");
+         cout<<"\n\t\t\t\t\t\t\t---------- Billing history ----------";
          fin.open("HISTORY.TXT", ios::in);
          while(fin.get(ch))
          {
@@ -243,6 +249,7 @@ start:
 
          goto start;
      case'3':
+         cout<<"\n\t\t\t\t\tExiting the system.good bye...!\n\n";
          exit(0);
      default:
          cout<<"\a";
