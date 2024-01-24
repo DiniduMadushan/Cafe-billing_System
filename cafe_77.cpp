@@ -64,7 +64,7 @@ void cart::input()
 
 void cart::output()
 {
-    int x;
+    int x=0;
 
     ifstream infile("BILL_NO.TXT");
     infile>>x;
