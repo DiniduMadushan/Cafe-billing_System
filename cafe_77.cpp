@@ -7,6 +7,7 @@
 #include<fstream>   //reads data from files and displays it
 #include <stdlib.h> //converting strings to different data types and vice versa
 #include <string>
+#include <conio.h>
 using namespace std;
 
 class head
@@ -166,23 +167,29 @@ pay:
 
 int authenticateUser()
 {
-    std::string username, password;
-    cout<<"\n\n\n\n\t\t\t\t\t\t-- USER LOGIN --";
-    std::cout << "\n\n\n\t\t\t\t\tEnter your username\t: ";
-    std::cin >> username;
+    string username, password;
+    cout << "\n\n\n\n\t\t\t\t\t\t-- USER LOGIN --";
+    cout << "\n\n\n\t\t\t\t\tEnter your username\t: ";
+    cin >> username;
 
-    std::cout << "\t\t\t\t\tEnter your password\t: ";
-    std::cin >> password;
+    cout << "\t\t\t\t\tEnter your password\t: ";
+    char ch;
+    password = "";
+    while ((ch = getch()) != 13) // 13 is the ASCII code for the Enter key
+    {
+        cout << '*'; // Print '*' for each character of the password
+        password += ch; // Store the entered character in the password string
+    }
 
     // Check if the entered username and password are correct
     if (username == "shenol" && password == "shenol")
     {
-        std::cout << "\n\n\t\t\t\t\tAuthentication successful!\n\n";
+        cout << "\n\n\t\t\t\t\tAuthentication successful!\n\n";
         return 1;
     }
     else
     {
-        std::cout << "\n\t\t\t\t\tAuthentication failed!. Invalid username or password.\n";
+        cout << "\n\t\t\t\t\tAuthentication failed!. Invalid username or password.\n";
         return 0;
     }
 }
