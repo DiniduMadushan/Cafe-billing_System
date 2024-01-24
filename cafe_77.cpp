@@ -17,18 +17,19 @@ public:
     int no_of_items;
     float Quantity[3];
     float price[3];
-    int added_vat[3];
-    int total_price[3];
+    float cart_price;
+    float aft_dis;
+    float total_price[3];
     void input();
     void output();
 };
-class vat:public head
+class dis : public head
 {
-    float vats;
+   float discount;
 public:
-    void vatcal();
+    void discountCal(); 
     void outputs();
-    void sum();
+    
 };
 
 
@@ -94,65 +95,70 @@ cout<<"\n";
 
 
 
-//       VAT CALCULATION
+//       discount calculation
 
 
-void vat::vatcal()
+void dis::discountCal()
 {
     input();
-    for(int i=0;i<no_of_items;i++)
+
+     cart_price=0;
+     aft_dis=0;
+
+    for (int i = 0; i < no_of_items; i++)
     {
-        if(price[i]<=100.00)
-        {
-            added_vat[i]= total_price[i]+(0.03* total_price[i]);
-        }
-        else
-        {
-            added_vat[i]= total_price[i]+(0.1* total_price[i]);
-        }
+        cart_price+=total_price[i];
     }
+
+    if (cart_price>=1000)
+    {
+        aft_dis=cart_price-(0.02*cart_price);
+    }else{
+        aft_dis=cart_price;
+    }
+    
+
 }
 
-//        VAT OUTPUTS
+//        discounts addition
 
 
-void vat::outputs()
+
+void dis::outputs()
 {
     output();
 
-    float cash=0,sum=0,qty=0,sumt=0;
+    float cash = 0, sum = 0, sumt = 0;
 
-    for(int i=0;i<no_of_items;i++)
-    {
-           sumt+= total_price[i];
-           sum+=added_vat[i];
-           qty+=Quantity[i];
-    }
     
-    cout<<"\n\t\t\t\t\t---------------------------------------------------------------------------\n";
-    cout<<"\n\t\t\t\t\t\tTotal cost= "<<sumt<<"\t\tInclusive of VAT: "<<sum;
-    cout<<"\n\n\t\t\t\t\t---------------------------------------------------------------------------\n";
-
+        sumt +=cart_price;
+        sum += aft_dis;
+       
+    
+    
+  cout << "\n\t\t\t\t\t---------------------------------------------------------------------------\n";
+    cout << "\n\t\t\t\t\t\tTotal cost= " << sumt << "\t\tAfter Discount: " << sum;
+    cout << "\n\n\t\t\t\t\t---------------------------------------------------------------------------\n";
 
     system("PAUSE");
     system("CLS");
-    cout<<"\n\n\t\t\t\t\t\t<<--------- PAYMENT SUMMARY ------->>\n";
-    cout<<"\n\n\t\t\t\t\tTotal cost to pay\t\t\t: Rs. "<<sum;
+    cout << "\n\n\t\t\t\t\t\t<<--------- PAYMENT SUMMARY ------->>\n";
+    cout << "\n\n\t\t\t\t\tTotal cost to pay\t\t\t: Rs. " << sum;
 
 pay:
-    cout<<"\n\n\t\t\t\t\tTotal cash given by the customer\t: Rs. ";
-    cin>>cash;
+    cout << "\n\n\t\t\t\t\tTotal cash given by the customer\t: Rs. ";
+    cin >> cash;
 
-    if(cash>=sum)
-        cout<<"\n\t\t\t\t\tRemainder\t\t\t\t: Rs. "<<cash-sum<<'\n';
-        
+    if (cash >= sum)
+        cout << "\n\t\t\t\t\tRemainder\t\t\t\t: Rs. " << cash - sum << '\n';
+
     else
-    {    cout<<"\n\t\t\t\t\tGiven cash is not enough.please repay!!!\n";
+    {
+        cout << "\n\t\t\t\t\tGiven cash is not enough. Please repay!!!\n";
 
-    goto pay;
+        goto pay;
     }
 }
-
 
 
 //   User authentication
@@ -189,7 +195,7 @@ int authenticateUser()
 
 int main()
 {
-    vat obj;
+    dis obj;
     char opt, ch;
     int a=1;
     ifstream fin;
@@ -233,13 +239,13 @@ start:
      switch(opt)
      {
      case'1':
-         obj.vatcal();
+         obj.discountCal();
 
          obj.outputs();
          goto start;
      case'2':
          system("CLS");
-         cout<<"\n\t\t\t\t\t\t\t---------- Billing history ----------";
+         cout<<"\n\t\t\t\t\t\t\t---------- Billing history ----------\n";
          fin.open("HISTORY.TXT", ios::in);
          while(fin.get(ch))
          {
