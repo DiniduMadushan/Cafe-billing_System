@@ -3,8 +3,8 @@
 					Bill No : 1878002049
 					|------------------------------------------------------------------------|
 
-					Item Name:  banana 		| Quantity:  20		| Price:  2000
+					Item Name:  banana 		| Quantity:  10		| Price:  1000
 
-					Item Name:  cake 		| Quantity:  10		| Price:  1000
+					Item Name:  cake 		| Quantity:  20		| Price:  2000
 
 					------------------------------------------------------------------------

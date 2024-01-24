@@ -7,10 +7,10 @@
 #include<fstream>   //reads data from files and displays it
 #include <stdlib.h> //converting strings to different data types and vice versa
 #include <string>
-#include <conio.h>
+#include <conio.h> //to use getch function
 using namespace std;
 
-class head
+class cart
 {
     char Item_name[80][80];
 
@@ -24,7 +24,7 @@ public:
     void input();
     void output();
 };
-class dis : public head
+class dis : public cart
 {
    float discount;
 public:
@@ -37,7 +37,7 @@ public:
 // input function
 
 
-void head::input()
+void cart::input()
 {
     system("CLS");   // Clears the console screen
     cout<<"\n\n\t\t\t\t\t\t\t---- New Entry ----";
@@ -62,7 +62,7 @@ void head::input()
 
 
 
-void head::output()
+void cart::output()
 {
     int x;
 
@@ -189,7 +189,7 @@ int authenticateUser()
     }
     else
     {
-        cout << "\n\t\t\t\t\tAuthentication failed!. Invalid username or password.\n";
+        cout << "\n\n\t\t\t\t\tAuthentication failed!. Invalid username or password.\n";
         return 0;
     }
 }
@@ -213,6 +213,8 @@ int main()
         for(int i=0;i<2;i++)
         {
             cout<<"\n\t\t\t\t\tTry once more..!\n";
+            system("PAUSE");
+            system("CLS");
             if(authenticateUser())
             {
                 goto last;
