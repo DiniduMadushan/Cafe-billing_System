@@ -1,5 +1,7 @@
 /*
-    develpoed by: J.H.Shenol kavinda thisera
+    develpoed by: W.M.Dinidu madushan bandara
+    CST20015
+    Uva wellassa university of sri lanka
 */
 
 #include<iostream>  //input and output stream
@@ -182,7 +184,7 @@ int authenticateUser()
     }
 
     // Check if the entered username and password are correct
-    if (username == "shenol" && password == "shenol")
+    if (username == "admin" && password == "admin1234")
     {
         cout << "\n\n\t\t\t\t\tAuthentication successful!\n\n";
         return 1;
@@ -241,7 +243,7 @@ start:
     cout<<"\n\n\t\t\t\t\t------------------------------------------------------------";
     cout<<"\n\t\t\t\t\t\t\tCafe77 - Billing Management System";
     cout<<"\n\t\t\t\t\t------------------------------------------------------------";
-     cout<<"\n\n\t\t\t\t\tWelcome Shenol, what do you want to do??\n ";
+     cout<<"\n\n\t\t\t\t\tWelcome admin, what do you want to do??\n ";
      cout<<"\n\t\t\t\t\t\t1. Enter new entry \n\t\t\t\t\t\t2. View billing History\n\t\t\t\t\t\t3. Quit\n";
      cout<<"\n\n\t\t\t\t\tSelect your option: ";
      cin>>opt;
